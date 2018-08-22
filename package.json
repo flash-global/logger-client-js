@@ -1,0 +1,32 @@
+{
+  "name": "logger-client-js",
+  "version": "0.1",
+  "description": "Logger client for javascript application",
+  "main": "src/logger-client.js",
+  "repository": "git@github.com:flash-global/logger-client-js.git",
+  "author": "yoctu <contact@yoctu.com>",
+  "license": "GPL-3.0",
+  "private": false,
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "jest": "^22.4.4",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
+  },
+  "scripts": {
+    "dev": "webpack --mode development",
+    "dist": "webpack --mode production",
+    "test": "jest",
+    "eslint": "eslint src"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "whatwg-fetch": "^2.0.4"
+  }
+}
