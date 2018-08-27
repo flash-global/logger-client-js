@@ -1,10 +1,10 @@
 {
   "name": "logger-client-js",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "Logger client for javascript application",
   "main": "src/logger-client.js",
   "repository": "git@github.com:flash-global/logger-client-js.git",
-  "author": "yoctu <contact@yoctu.com>",
+  "author": "yoctu <renaud@yoctu.com>",
   "license": "GPL-3.0",
   "private": false,
   "devDependencies": {
@@ -27,6 +27,9 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "npm": "^6.4.0",
+    "to": "^0.2.9",
+    "update": "^0.7.4",
     "whatwg-fetch": "^2.0.4"
   }
 }

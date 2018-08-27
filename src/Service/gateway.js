@@ -1,6 +1,6 @@
 export default class Gateway {
     constructor() {
-        this.loggerBaseUrl = '';
+        this.loggerBaseUrl = 'http://toto.com';
     }
 
     /**
