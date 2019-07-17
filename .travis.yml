@@ -1,0 +1,30 @@
+language: node_js
+
+node_js:
+  - '12'
+
+sudo: false
+
+cache:
+  yarn: true
+  directories:
+    - ".eslintcache"
+    - node_modules
+
+script:
+  - yarn eslint
+  - yarn test
+
+before_deploy:
+  - npm --no-git-tag-version --allow-same-version version $TRAVIS_TAG
+  - yarn build
+  - rm .travis.yml
+
+deploy:
+  provider: npm
+  email: contact@yoctu.com
+  skip_cleanup: true
+  api_key:
+    secure: Ij4wJ820glZQ1AymeHikbQUjtZRX4n8812CxvULR9RgCVS5fxi7Y7Ny1MI1Wz7bT/unVHQqa5xn1Rdvh125pDE/1p7IUBOfnR0QDl3xqeMCXhpFRHhbyh1FMSxQNsjLuqAec8nRHMRUjo7GfnZeQhmNbSxABbkuDZC4MCs00al7IBApW44LfY3wzoWPPGtTGBL1EWPoqmFqzpWHciFYui4YvCowUdoYO3ruEr5ZmzeCJvCMg1RbjdWQaOjYsBTfJIf++Si/vW8ge3gsAB7LiqCbUPaZk4UUqPkcsUOY2sjVafW5w1dZFAaxzCFzBG8ReNr89f6UXRsWuZUjGnGuIHmMX4IT8dtdZyN6TH58D8fw0YSzhI73d0qa4FhVrTSfF1Jvkp4KRraa7uaBiPZmjYD68krm+IZYWCiOB5m2Mrjj0pqjHPlk8Iey14+L2Z3wUvHO5agmKDKjJDBYfiyT/mXk57hfhzge0xUDej5h2I2WJi2YI+KLsdcZT9y9/0uY/XxyNBA+820zJOs/c75FBzGWdrSUMFUyU6nv91OW7VdQjSL0CGAdGRuxKpa88EhQ1fS42VtqCcSHAct5PQU+rpHExKBxHknVCeWy+IMJqEozYG8YzSH2Zmqx3lZ0XDj68i8iPrZuf29NqaBn6/q4E/rgGiOkRI3rcFkkOOMCgkhQ=
+  on:
+    tags: true

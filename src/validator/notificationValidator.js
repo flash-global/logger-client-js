@@ -1,4 +1,4 @@
-import Notification from '../entity/Notification';
+const Notification = require('./../entity/Notification');
 
 let errors = {};
 
@@ -20,7 +20,7 @@ const validateMessage = (message) => {
 /**
  * Validate the level of the entity
  *
- * @param {integer} level
+ * @param {int} level
  */
 const validateLevel = (level) => {
     const levels = [
@@ -92,7 +92,7 @@ const validateReportedAt = (reportedAt) => {
     return true;
 };
 
-const validate = notification => new Promise((resolve) => {
+module.exports = (notification) => new Promise((resolve) => {
     errors = {};
 
     validateMessage(notification.message || '');
@@ -106,5 +106,3 @@ const validate = notification => new Promise((resolve) => {
         errors,
     });
 });
-
-export default validate;

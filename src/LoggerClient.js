@@ -1,10 +1,10 @@
-import NotificationEntity from './entity/Notification.js';
+const Notification = require('./entity/Notification.js');
+const configureLib = require('./../lib/configure.js');
+const notifyLib = require('./../lib/notify.js');
+const retrieveLib = require('./../lib/retrieve.js');
 
-import configureLib from '../lib/configure.js';
-import notifyLib from '../lib/notify.js';
-import retrieveLib from '../lib/retrieve.js';
+exports.configure = configureLib.configure;
+exports.Notificatil = Notification;
+exports.notify = notifyLib;
+exports.retrieve = retrieveLib;
 
-export const configure = configureLib;
-export const notify = notifyLib;
-export const retrieve = retrieveLib;
-export const Notification = NotificationEntity;
