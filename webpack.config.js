@@ -3,10 +3,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
     const config = {
-        entry: ['./build/bootstrap.js'],
+        entry: ['./src/index.js'],
         output: {
             path: path.resolve(__dirname, 'dist'),
-            filename: 'logger-client.js'
+            filename: 'logger-client.js',
         },
         module: {
             rules: [
@@ -14,20 +14,20 @@ module.exports = (env, argv) => {
                     test: /\.js$/,
                     exclude: /(node_modules|test)/,
                     use: {
-                        loader: 'babel-loader'
-                    }
-                }
-            ]
+                        loader: 'babel-loader',
+                    },
+                },
+            ],
         },
         plugins: [
             new CleanWebpackPlugin(['dist']),
-        ]
+        ],
     };
 
     if (argv.mode === 'development') {
         config.watch = true;
         config.watchOptions = {
-            poll: true
+            poll: true,
         };
         config.devtool = 'source-map';
     }

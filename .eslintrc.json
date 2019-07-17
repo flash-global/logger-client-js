@@ -1,9 +1,11 @@
 {
-    "extends": "airbnb-base",
-    "rules": {
-        "indent": ["error", 4],
-        "no-undef": ["off"], // disable error on undefined
-        "no-param-reassign": ["off"], // disable error when class attribute is reassign
-        "class-methods-use-this": ["off"] // disable error when class method do not use this
-    }
+  "extends": "airbnb-base",
+  "rules": {
+      "indent": ["error", 4],
+      "no-undef": ["off"],
+      "no-param-reassign": ["off"],
+      "class-methods-use-this": ["off"],
+      "import/extensions": 0,
+      "no-underscore-dangle": 0
+  }
 }
