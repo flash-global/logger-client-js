@@ -28,7 +28,7 @@ class Notification {
     command;
     origin;
     category;
-    env = 'n/c';
+    env;
     context;
 
     constructor(args = {}) {
