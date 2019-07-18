@@ -48,6 +48,9 @@ class Notification {
             objectToReturn[snakeCase(property)] = this[property];
         });
 
+        objectToReturn.back_trace = objectToReturn.backtrace;
+        delete objectToReturn.backtrace;
+
         return objectToReturn;
     }
 }

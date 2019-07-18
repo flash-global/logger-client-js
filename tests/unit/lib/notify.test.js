@@ -45,8 +45,6 @@ it("Reject because response not ok", () => {
     configure({url: urlFixture, filterLevel: levelFixture});
 
     return expect(notify(notificationFixture)).rejects.toBe(responseFixture).then(() => {
-        notificationFixture.origin = 'http';
-
         expect(global.fetch.mock.calls.length).toEqual(1);
         expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
@@ -72,8 +70,6 @@ it("Reject because error while sending request", () => {
     configure({url: urlFixture, filterLevel: levelFixture});
 
     return expect(notify(notificationFixture)).rejects.toEqual("Error").then(() => {
-        notificationFixture.origin = 'http';
-
         expect(global.fetch.mock.calls.length).toEqual(1);
         expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
@@ -101,8 +97,6 @@ it("Resolve", () => {
     configure({url: urlFixture, filterLevel: levelFixture});
 
     return expect(notify(notificationFixture)).resolves.toEqual(responseDataFixture).then(() => {
-        notificationFixture.origin = 'http';
-
         expect(global.fetch.mock.calls.length).toEqual(1);
         expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({

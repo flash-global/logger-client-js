@@ -20,6 +20,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
+    "node-fetch": "^2.6.0",
     "prettier": "^1.18.2",
     "prettier-eslint-cli": "^5.0.0",
     "whatwg-fetch": "^3.0.0"
@@ -31,6 +32,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "error-stack-parser": "^2.0.2",
     "lodash": "^4.17.11",
     "moment": "^2.24.0"
   }
