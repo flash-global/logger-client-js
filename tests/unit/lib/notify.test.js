@@ -9,7 +9,7 @@ it("Throw error because there is not configuration", () => {
 });
 
 it("Reject because too low level", () => {
-    const urlFixture = 'http://notification-api.local/api/notifications';
+    const urlFixture = 'http://logger.local';
     const notificationFixture = new Notification();
     const errorsFixture = 'too low level';
 
@@ -19,7 +19,7 @@ it("Reject because too low level", () => {
 });
 
 it("Reject because validation", () => {
-    const urlFixture = 'http://notification-api.local/api/notifications';
+    const urlFixture = 'http://logger.local';
     const notificationFixture = new Notification();
     const levelFixture = 1;
     const errorsFixture = { message: "Message cannot be empty" };
@@ -30,7 +30,7 @@ it("Reject because validation", () => {
 });
 
 it("Reject because response not ok", () => {
-    const urlFixture = 'http://notification-api.local/api/notifications';
+    const urlFixture = 'http://logger.local';
     const notificationFixture = new Notification({message: 'test'});
     const levelFixture = 1;
 
@@ -48,7 +48,7 @@ it("Reject because response not ok", () => {
         notificationFixture.origin = 'http';
 
         expect(global.fetch.mock.calls.length).toEqual(1);
-        expect(global.fetch.mock.calls[0][0]).toEqual(`http://notification-api.local/api/notifications`);
+        expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
             method: 'POST',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -60,7 +60,7 @@ it("Reject because response not ok", () => {
 });
 
 it("Reject because error while sending request", () => {
-    const urlFixture = 'http://notification-api.local/api/notifications';
+    const urlFixture = 'http://logger.local';
     const notificationFixture = new Notification({message: 'test'});
     const levelFixture = 1;
 
@@ -75,7 +75,7 @@ it("Reject because error while sending request", () => {
         notificationFixture.origin = 'http';
 
         expect(global.fetch.mock.calls.length).toEqual(1);
-        expect(global.fetch.mock.calls[0][0]).toEqual(`http://notification-api.local/api/notifications`);
+        expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
             method: 'POST',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -87,7 +87,7 @@ it("Reject because error while sending request", () => {
 });
 
 it("Resolve", () => {
-    const urlFixture = 'http://notification-api.local/api/notifications';
+    const urlFixture = 'http://logger.local';
     const responseDataFixture = {message: 'test'};
     const notificationFixture = new Notification({message: 'test'});
     const levelFixture = 1;
@@ -104,7 +104,7 @@ it("Resolve", () => {
         notificationFixture.origin = 'http';
 
         expect(global.fetch.mock.calls.length).toEqual(1);
-        expect(global.fetch.mock.calls[0][0]).toEqual(`http://notification-api.local/api/notifications`);
+        expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
             method: 'POST',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },

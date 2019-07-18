@@ -9,7 +9,7 @@ it("Throw error because there is not configuration", () => {
 });
 
 it("Reject because response not ok", () => {
-    const urlFixture = 'http://logger-api.local/api/notifications';
+    const urlFixture = 'http://logger-api.local';
     const criteriaFixture = {notification_message: 'test'};
 
     const responseFixture = new Response();
@@ -31,7 +31,7 @@ it("Reject because response not ok", () => {
 });
 
 it("Reject because error while sending request", () => {
-    const urlFixture = 'http://logger-api.local/api/notifications';
+    const urlFixture = 'http://logger-api.local';
     const criteriaFixture = {notification_message: 'test'};
 
     const promiseFetchFixture = new Promise((_, reject) => reject("Error"));
@@ -50,7 +50,7 @@ it("Reject because error while sending request", () => {
 });
 
 it("Resolve", () => {
-    const urlFixture = 'http://logger-api.local/api/notifications';
+    const urlFixture = 'http://logger-api.local';
     const criteriaFixture = {notification_message: 'test'};
     const notificationFixture = new Notification({message: 'test'});
 
@@ -75,7 +75,7 @@ it("Resolve", () => {
 });
 
 it("Resolve with no criterias", () => {
-    const urlFixture = 'http://logger-api.local/api/notifications';
+    const urlFixture = 'http://logger-api.local';
     const notificationFixture = new Notification({message: 'test'});
 
     const responseFixture = new Response(JSON.stringify({data: [notificationFixture]}));
