@@ -13,7 +13,7 @@ it("Reject because too low level", () => {
     const notificationFixture = new Notification();
     const errorsFixture = 'too low level';
 
-    configure({url: urlFixture});
+    configure({url: urlFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toEqual(errorsFixture).then(() => delete configs.url);
 });
@@ -24,7 +24,7 @@ it("Reject because validation", () => {
     const levelFixture = 1;
     const errorsFixture = { message: "Message cannot be empty" };
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toEqual(errorsFixture).then(() => delete configs.url);
 });
@@ -42,7 +42,7 @@ it("Reject because response not ok", () => {
     global.fetch = jest.fn();
     global.fetch.mockReturnValueOnce(promiseFetchFixture);
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toBe(responseFixture).then(() => {
         expect(global.fetch.mock.calls.length).toEqual(1);
@@ -67,7 +67,7 @@ it("Reject because error while sending request", () => {
     global.fetch = jest.fn();
     global.fetch.mockReturnValueOnce(promiseFetchFixture);
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toEqual("Error").then(() => {
         expect(global.fetch.mock.calls.length).toEqual(1);
@@ -94,7 +94,7 @@ it("Resolve", () => {
     global.fetch = jest.fn();
     global.fetch.mockReturnValueOnce(promiseFetchFixture);
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).resolves.toEqual(responseDataFixture).then(() => {
         expect(global.fetch.mock.calls.length).toEqual(1);

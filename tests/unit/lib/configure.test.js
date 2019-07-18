@@ -17,7 +17,7 @@ it("hasBeenConfigured will throw an exception, bad configuration sent", () => {
 });
 
 it("hasBeenConfigured will not throw an exception, good configuration sent", () => {
-    const configFixture = {url: 'http://logger-api.local', filterLevel: 8};
+    const configFixture = {url: 'http://logger-api.local', filterLevel: 8, isHttpServer: true};
     configure(configFixture);
 
     expect(() => {
