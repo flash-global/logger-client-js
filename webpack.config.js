@@ -1,36 +1,19 @@
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const Encore = require('@symfony/webpack-encore');
 
-module.exports = (env, argv) => {
-    const config = {
-        entry: ['./src/index.js'],
-        output: {
-            path: path.resolve(__dirname, 'dist'),
-            filename: 'logger-client.js',
-        },
-        module: {
-            rules: [
-                {
-                    test: /\.js$/,
-                    exclude: /(node_modules|test)/,
-                    use: {
-                        loader: 'babel-loader',
-                    },
-                },
-            ],
-        },
-        plugins: [
-            new CleanWebpackPlugin(['dist']),
-        ],
-    };
+Encore
+    .setOutputPath(__dirname + '/dist/')
+    .setPublicPath('/dist')
+    .addEntry('filer-client-js', ['whatwg-fetch', './src/LoggerClient.js'])
+    .cleanupOutputBeforeBuild()
+    .enableSourceMaps(!Encore.isProduction())
+    .disableSingleRuntimeChunk()
+    .configureTerserPlugin((options) => {
+        options.terserOptions = {
+            output: {
+                comments: false
+            }
+        }
+    })
+;
 
-    if (argv.mode === 'development') {
-        config.watch = true;
-        config.watchOptions = {
-            poll: true,
-        };
-        config.devtool = 'source-map';
-    }
-
-    return config;
-};
+module.exports = Encore.getWebpackConfig();
