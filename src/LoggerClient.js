@@ -4,7 +4,7 @@ const notifyLib = require('./../lib/notify.js');
 const retrieveLib = require('./../lib/retrieve.js');
 
 exports.configure = configureLib.configure;
-exports.Notificatil = Notification;
+exports.Notification = Notification;
 exports.notify = notifyLib;
 exports.retrieve = retrieveLib;
 
