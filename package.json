@@ -2,7 +2,7 @@
   "name": "logger-client-js",
   "version": "1.0.0",
   "description": "Logger client for JavaScript apps",
-  "main": "src/index.js",
+  "main": "src/LoggerClient.js",
   "repository": "git@github.com:flash-global/logger-client-js.git",
   "author": "Boris Cerati <contact@boris-cerati.fr>",
   "license": "GPL-3.0",
