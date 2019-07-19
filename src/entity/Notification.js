@@ -28,7 +28,7 @@ class Notification {
     command;
     origin;
     category;
-    env = 'n/c';
+    env;
     context;
 
     constructor(args = {}) {
@@ -47,6 +47,9 @@ class Notification {
         Object.keys(this).forEach((property) => {
             objectToReturn[snakeCase(property)] = this[property];
         });
+
+        objectToReturn.back_trace = objectToReturn.backtrace;
+        delete objectToReturn.backtrace;
 
         return objectToReturn;
     }

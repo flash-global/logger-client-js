@@ -46,7 +46,8 @@ import { configure } from 'logger-client-js';
 
 configure({
   url:'http://127.0.0.1:8080/api/notifications',
-  filterLevel: LoggerClient.Notification.LVL_DEBUG
+  filterLevel: LoggerClient.Notification.LVL_DEBUG,
+  isHttpServer: true, // if node process is running a http server
 });
 ```
 

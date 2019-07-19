@@ -13,7 +13,7 @@ it("Reject because too low level", () => {
     const notificationFixture = new Notification();
     const errorsFixture = 'too low level';
 
-    configure({url: urlFixture});
+    configure({url: urlFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toEqual(errorsFixture).then(() => delete configs.url);
 });
@@ -24,7 +24,7 @@ it("Reject because validation", () => {
     const levelFixture = 1;
     const errorsFixture = { message: "Message cannot be empty" };
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toEqual(errorsFixture).then(() => delete configs.url);
 });
@@ -42,11 +42,9 @@ it("Reject because response not ok", () => {
     global.fetch = jest.fn();
     global.fetch.mockReturnValueOnce(promiseFetchFixture);
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toBe(responseFixture).then(() => {
-        notificationFixture.origin = 'http';
-
         expect(global.fetch.mock.calls.length).toEqual(1);
         expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
@@ -69,11 +67,9 @@ it("Reject because error while sending request", () => {
     global.fetch = jest.fn();
     global.fetch.mockReturnValueOnce(promiseFetchFixture);
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).rejects.toEqual("Error").then(() => {
-        notificationFixture.origin = 'http';
-
         expect(global.fetch.mock.calls.length).toEqual(1);
         expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
@@ -98,11 +94,9 @@ it("Resolve", () => {
     global.fetch = jest.fn();
     global.fetch.mockReturnValueOnce(promiseFetchFixture);
 
-    configure({url: urlFixture, filterLevel: levelFixture});
+    configure({url: urlFixture, filterLevel: levelFixture, isHttpServer: true});
 
     return expect(notify(notificationFixture)).resolves.toEqual(responseDataFixture).then(() => {
-        notificationFixture.origin = 'http';
-
         expect(global.fetch.mock.calls.length).toEqual(1);
         expect(global.fetch.mock.calls[0][0]).toEqual(`http://logger.local/api/notifications`);
         expect(global.fetch.mock.calls[0][1]).toEqual({
