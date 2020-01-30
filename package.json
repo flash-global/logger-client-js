@@ -28,7 +28,7 @@
   "scripts": {
     "dev": "yarn encore dev --watch",
     "build": "yarn encore production",
-    "eslint": "eslint .",
+    "lint": "eslint .",
     "test": "jest"
   },
   "dependencies": {
