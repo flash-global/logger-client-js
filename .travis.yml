@@ -1,23 +1,22 @@
-language: node_js
+language: nodejs
 
-node_js:
-  - '12'
+node_js: lts/*
 
 sudo: false
 
 cache:
-  yarn: true
+  npm: true
   directories:
     - ".eslintcache"
     - node_modules
 
 script:
-  - yarn eslint
-  - yarn test
+  - npm run eslint
+  - npm run test
 
 before_deploy:
   - npm --no-git-tag-version --allow-same-version version $TRAVIS_TAG
-  - yarn build
+  - npm run build
   - rm .travis.yml
 
 deploy:

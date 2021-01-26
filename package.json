@@ -1,6 +1,6 @@
 {
   "name": "logger-client-js",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Logger client for JavaScript apps",
   "main": "src/LoggerClient.js",
   "repository": "git@github.com:flash-global/logger-client-js.git",
@@ -8,32 +8,32 @@
   "license": "GPL-3.0",
   "private": false,
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/preset-env": "^7.5.4",
-    "@symfony/webpack-encore": "^0.27.0",
-    "babel-eslint": "^10.0.2",
-    "core-js": "2",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@symfony/webpack-encore": "^0.33.0",
+    "babel-eslint": "^10.1.0",
+    "core-js": "^2.6.12",
     "eslint": "^5.9.0",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^22.7.2",
-    "eslint-plugin-prettier": "^3.1.0",
-    "husky": "^3.0.0",
-    "jest": "^24.8.0",
-    "node-fetch": "^2.6.0",
-    "prettier": "^1.18.2",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^22.21.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^3.1.0",
+    "jest": "^26.6.3",
+    "node-fetch": "^2.6.1",
+    "prettier": "^1.19.1",
     "prettier-eslint-cli": "^5.0.0",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.5.0"
   },
   "scripts": {
-    "dev": "yarn encore dev --watch",
-    "build": "yarn encore production",
+    "dev": "encore dev --watch",
+    "build": "encore production",
     "eslint": "eslint .",
     "test": "jest"
   },
   "dependencies": {
-    "error-stack-parser": "^2.0.2",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0"
+    "error-stack-parser": "^2.0.6",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1"
   }
 }
